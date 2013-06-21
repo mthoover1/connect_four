@@ -16,7 +16,7 @@ require 'active_record'
 require 'logger'
 
 require 'bcrypt'
-require 'faker'
+# require 'faker'
 
 require 'pusher'
 require 'backports'
