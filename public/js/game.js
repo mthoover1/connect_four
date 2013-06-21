@@ -1,10 +1,13 @@
 $(document).ready(function() {
 
+  var player = 1;
+
   var pusher = new Pusher('f206b222ae6d845db32e');
   var channel = pusher.subscribe('moves');
 
   channel.bind('new_move', function(data) {
     // repopulateBoard(data.new_move);
+    console.log(data);
     for (var i=1; i<43; i++) {
       var slot = $('#spacer-' + i).children(":first");
       slot.attr('id', data.new_move[i-1]);
@@ -29,13 +32,14 @@ $(document).ready(function() {
 
   $('.slot').click(function() {
     if ($(this).hasClass("slot")) {
-      if (player === 1) {
+      console.log("Player at click: " + player);
+      if (player == 1) {
         $(this).attr("class", "slot-black");
         $(this).attr("id", "1");
 
         player = 2;
 
-        $.post('/move', { board: returnBoard(), player: player });
+        $.post('/move', { board: returnBoard(), player: player, random: "HELLO" });
       }
       else {
         $(this).attr("class", "slot-red");
@@ -43,7 +47,7 @@ $(document).ready(function() {
 
         player = 1;
 
-        $.post('/move', { board: returnBoard(), player: player });
+        $.post('/move', { board: returnBoard(), player: player, random: "HEEHAW" });
       }
     }
   });

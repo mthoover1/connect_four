@@ -1,7 +1,8 @@
 post '/move' do
   new_move = params[:board]
   player = params[:player]
-  Pusher.trigger(PUSHER_CHANNEL, 'new_move', {:new_move => new_move, :player => player })
+  random = params[:random]
+  Pusher.trigger(PUSHER_CHANNEL, 'new_move', {:new_move => new_move, :player => player, :random => random })
 end
 
 post '/pusher/auth' do
