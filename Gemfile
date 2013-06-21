@@ -17,6 +17,9 @@ gem 'bcrypt-ruby'
 
 gem 'rake'
 
+gem 'pusher'
+gem 'backports'
+
 gem 'shotgun'
 
 group :test do
