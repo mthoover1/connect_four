@@ -35,5 +35,6 @@ get '/board' do
 end
 
 post '/game/checkvictory' do
-  params[:board]
+  content_type :json
+  { winner: Game.new.winner?(params[:board]), board: params[:board] }.to_json
 end

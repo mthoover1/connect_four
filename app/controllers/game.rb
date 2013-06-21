@@ -1,11 +1,7 @@
-post '/movered' do
-  move = params[:move]
-  Pusher.trigger(PUSHER_CHANNEL, 'move-red', {:move => move })
-end
-
-post '/moveblack' do
-  move = params[:move]
-  Pusher.trigger(PUSHER_CHANNEL, 'move-black', {:move => move })
+post '/move' do
+  new_move = params[:board]
+  player = params[:player]
+  Pusher.trigger(PUSHER_CHANNEL, 'new_move', {:new_move => new_move, :player => player })
 end
 
 post '/pusher/auth' do

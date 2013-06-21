@@ -1,27 +1,31 @@
-// <div id="#" class="slot"><p class="hidden">0</p></div>
-
-
 $(document).ready(function() {
 
   var pusher = new Pusher('f206b222ae6d845db32e');
   var channel = pusher.subscribe('moves');
 
-  channel.bind('move-black', function(data) {
+  channel.bind('new_move', function(data) {
+    // repopulateBoard(data.new_move);
+    for (var i=1; i<43; i++) {
+      var slot = $('#spacer-' + i).children(":first");
+      slot.attr('id', data.new_move[i-1]);
+      if (data.new_move[i-1] === "1") {
+        slot.attr("class", "slot-black");
+      }
+      if (data.new_move[i-1] === "2") {
+        slot.attr("class", "slot-red");
+      }
+    }
 
     $.post('/game/checkvictory', {board : returnBoard()}, function(response) {
-      alert(response);
+      if (response.winner != null) {
+        alert(response.winner);
+      }
     });
 
-    // for (var i=1; i<43; i++) {
-    //   var value = $('#spacer-' + i).children(":first");
-    //   boardString = boardString + (value.attr('id'));
+    player = data.player;
+    console.log(player);
   });
 
-  channel.bind('move-red', function(data) {
-    alert("move red");
-  });
-
-  var player = 1;
 
   $('.slot').click(function() {
     if ($(this).hasClass("slot")) {
@@ -29,21 +33,20 @@ $(document).ready(function() {
         $(this).attr("class", "slot-black");
         $(this).attr("id", "1");
 
-        $.post('/moveblack', returnBoard());
-
         player = 2;
+
+        $.post('/move', { board: returnBoard(), player: player });
       }
       else {
         $(this).attr("class", "slot-red");
         $(this).attr("id", "2");
 
-        $.post('/movered', returnBoard());
-
         player = 1;
+
+        $.post('/move', { board: returnBoard(), player: player });
       }
     }
   });
-
 
   function returnBoard() {
     var boardString = ""
@@ -67,3 +70,7 @@ $(document).ready(function() {
     online -= 1;
   });
 });
+
+function convertDomToString() {
+
+}
