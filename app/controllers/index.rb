@@ -1,5 +1,5 @@
 get '/' do
-  erb :index
+  erb :board
 end
 
 get '/logout' do

@@ -20,19 +20,21 @@ $(document).ready(function() {
     }
 
     $.post('/game/checkvictory', {board : returnBoard()}, function(response) {
-      if (response.winner != null) {
-        alert(response.winner);
+      console.log(response);
+      if (response.winner == 1) {
+        $('nav').append("<div id='victory'>Winner is Player " + response.winner + " (Black)!!!</div>");
+      }
+      if (response.winner == 2) {
+        $('nav').append("<div id='victory'>Winner is Player " + response.winner + " (Red)!!!</div>");
       }
     });
 
     player = data.player;
-    console.log(player);
   });
 
 
   $('.slot').click(function() {
     if ($(this).hasClass("slot")) {
-      console.log("Player at click: " + player);
       if (player == 1) {
         $(this).attr("class", "slot-black");
         $(this).attr("id", "1");

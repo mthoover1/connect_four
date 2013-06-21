@@ -15,6 +15,7 @@ nav {
 
 #title {
   display: inline;
+  padding-left: 30px;
 }
 
 #title a {
@@ -36,6 +37,13 @@ nav {
 #nav-links div {
   display: inline;
   /*margin-right: 20px;*/
+}
+
+#nav-links a {
+  background-color: #8D84E3;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 10px;
 }
 
 #nav-links a, #nav-links a:visited {
@@ -115,6 +123,22 @@ th {
   margin: 10px;
   border-radius: 100%;
   background-color: black;
+}
+
+#victory {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  height: 40px;
+  z-index: 1;
+  width: 40%;
+  margin: 10px auto;
+  background-color: #0000FF;
+  opacity: 0.65;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 8px;
 }
 
 #board-footer {
