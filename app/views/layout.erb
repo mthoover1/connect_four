@@ -19,9 +19,6 @@
 </head>
 <body>
   <nav>
-    <div id="title">
-      <a href="/">title</a>
-    </div>
     <div id="nav-links">
       <% unless session[:id] %>
       <div><a href="/signup">Sign Up</a></div>
@@ -31,6 +28,9 @@
       <div><a href="/users/<%= session[:id] %>">Profile</a></div>
       <div><a href="/logout">Logout</a></div>
       <% end %>
+    </div>
+    <div id="title">
+      <a href="/">Connect Four</a>
     </div>
   </nav>
   <div class="container">
