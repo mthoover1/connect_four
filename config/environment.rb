@@ -18,6 +18,9 @@ require 'logger'
 require 'bcrypt'
 require 'faker'
 
+require 'pusher'
+require 'backports'
+
 require 'sinatra'
 require "sinatra/reloader" if development?
 
@@ -34,3 +37,10 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+
+Pusher.app_id = '46018'
+Pusher.key = 'f206b222ae6d845db32e'
+Pusher.secret = 'd367c6a8c94bc7d39291'
+PUSHER_CHANNEL = 'moves'
+PUSHER_PRESENCE_CHANNEL = 'presence-moves'

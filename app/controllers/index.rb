@@ -29,3 +29,11 @@ post '/createuser' do
   session[:id] = user.id
   redirect '/'
 end
+
+get '/board' do
+  erb :board
+end
+
+post '/game/checkvictory' do
+  params[:board]
+end
