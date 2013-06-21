@@ -1,5 +1,4 @@
-class Game
- # < ActiveRecord::Base
+class Game < ActiveRecord::Base
 
   def winner?(board_string)
     board = transform_into_2d(board_string)
