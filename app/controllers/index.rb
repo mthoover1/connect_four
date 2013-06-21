@@ -33,3 +33,7 @@ end
 get '/board' do
   erb :board
 end
+
+post '/game/checkvictory' do
+  params[:board]
+end

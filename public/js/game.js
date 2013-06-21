@@ -7,7 +7,14 @@ $(document).ready(function() {
   var channel = pusher.subscribe('moves');
 
   channel.bind('move-black', function(data) {
-    alert("move black");
+
+    $.post('/game/checkvictory', {board : returnBoard()}, function(response) {
+      alert(response);
+    });
+
+    // for (var i=1; i<43; i++) {
+    //   var value = $('#spacer-' + i).children(":first");
+    //   boardString = boardString + (value.attr('id'));
   });
 
   channel.bind('move-red', function(data) {
