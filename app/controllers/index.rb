@@ -29,3 +29,7 @@ post '/createuser' do
   session[:id] = user.id
   redirect '/'
 end
+
+get '/board' do
+  erb :board
+end
